@@ -27,7 +27,14 @@ const getUsers = () => {
   return allUsers;
 };
 
+const getUsersById = (id) => {
+  const user = User.findByPk(id, { attributes: { exclude: ['password'] } });
+
+  return user;
+};
+
 module.exports = {
   createUser,
   getUsers,
+  getUsersById,
 };
