@@ -1,15 +1,21 @@
-const { decodeToken } = require("../utils/JWT");
+const { decodeToken } = require('../utils/JWT');
 
 const validateToken = (req, res, next) => {
   const { authorization: token } = req.headers;
 
-  if (!token) {
-    return res.status(401).json({ message: 'Token not found' })
+  try {
+    if (!token) {
+      return res.status(401).json({ message: 'Token not found' });
+    }
+
+    const decode = decodeToken(token);
+    
+    req.user = decode;
+
+    return next();
+  } catch (error) {
+    return res.status(401).json({ message: 'Expired or invalid token' });
   }
-
-  const decode = decodeToken(token);
-
-  next();
 };
 
 module.exports = {
