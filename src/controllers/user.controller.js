@@ -12,6 +12,12 @@ const createUser = async (req, res) => {
   return res.status(201).json({ token: responseService });
 };
 
+const getUsers = async (req, res) => {
+
+  return res.status(200).json(response);
+}
+
 module.exports = { 
   createUser,
+  getUsers,
 };
