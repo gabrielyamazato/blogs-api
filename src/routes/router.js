@@ -15,5 +15,6 @@ route.post('/user', validateFieldsUser, userController.createUser);
 route.get('/user', validateToken, userController.getUsers);
 route.get('/user/:id', validateToken, userController.getUsersById);
 route.post('/categories', validateToken, validateName, categoryController.createCategory);
+route.get('/categories', validateToken, categoryController.getAllCat);
 
 module.exports = route;
