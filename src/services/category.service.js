@@ -2,12 +2,12 @@ const { Category } = require('../models');
 
 const createCategory = async ({ name }) => {
   await Category.create(
-    { name }
+    { name },
   );
 
   const responseNewCategory = await Category.findOne({ where: { name } });
 
-  return responseNewCategory
+  return responseNewCategory;
 };
 
 module.exports = {
