@@ -14,5 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   })
 
+  UserTable.associate = ({ BlogPost }) => {
+    UserTable.hasMany(BlogPost);
+  }
+
   return UserTable;
 };
