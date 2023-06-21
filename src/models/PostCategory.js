@@ -12,15 +12,17 @@ module.exports = (sequelize, DataTypes) => {
 
   PostCategory.associate = ({ BlogPost, Category }) => {
     BlogPost.belongsToMany(Category, {
-      through: PostCategory,
-      foreignKey: 'categoryId',
-      otherKey: 'postId',
-    })
-
-    Category.belongsToMany(BlogPost, {
+      as: 'categories',
       through: PostCategory,
       foreignKey: 'postId',
       otherKey: 'categoryId',
+    })
+
+    Category.belongsToMany(BlogPost, {
+      as: 'blog_posts',
+      through: PostCategory,
+      foreignKey: 'categoryId',
+      otherKey: 'postId',
     })
   }
   
